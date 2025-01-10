@@ -6,18 +6,14 @@ deck = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"] * 4
 game_over = False
 player_cards = []
 computer_cards = []
+player_score = 0
+computer_score = 0
 final_message = ""
 
 def pick_a_card():
     card = random.choice(deck)
     deck.remove(card)
     return card
-
-def start_hand():
-    player_cards.append(pick_a_card())
-    player_cards.append(pick_a_card())
-    computer_cards.append(pick_a_card())
-    computer_cards.append(pick_a_card())
 
 def calculate_score(current_score, card):
     if card == "A":
@@ -44,11 +40,12 @@ def print_result():
     print(f"Computer's cards: {computer_cards}, current score: {computer_score}")
 
 print(logo)
-start_hand()
-player_score = calculate_score(0, player_cards[0])
-player_score = calculate_score(player_score, player_cards[1])
-computer_score = calculate_score(0, computer_cards[0])
-computer_score = calculate_score(computer_score, computer_cards[1])
+
+for _ in range(2):
+    player_cards.append(pick_a_card())
+    player_score = calculate_score(player_score, player_cards[-1])
+    computer_cards.append(pick_a_card())
+    computer_score = calculate_score(computer_score, computer_cards[-1])
 
 print_result()
 
