@@ -10,7 +10,7 @@ player_score = 0
 computer_score = 0
 final_message = ""
 
-def pick_a_card():
+def deal_card():
     card = random.choice(deck)
     deck.remove(card)
     return card
@@ -42,9 +42,9 @@ def print_result():
 print(logo)
 
 for _ in range(2):
-    player_cards.append(pick_a_card())
+    player_cards.append(deal_card())
     player_score = calculate_score(player_score, player_cards[-1])
-    computer_cards.append(pick_a_card())
+    computer_cards.append(deal_card())
     computer_score = calculate_score(computer_score, computer_cards[-1])
 
 print_result()
@@ -53,7 +53,7 @@ while not game_over:
     need_card = input_another_card()
 
     if need_card == 'y':
-        player_cards.append(pick_a_card())
+        player_cards.append(deal_card())
         player_score = calculate_score(player_score, player_cards[-1])
 
         if player_score > 21:
@@ -63,7 +63,7 @@ while not game_over:
         print_result()
     else:
         while computer_score < 17:
-            computer_cards.append(pick_a_card())
+            computer_cards.append(deal_card())
             computer_score = calculate_score(computer_score, computer_cards[-1])
             print_result()
             if computer_score > 21:
