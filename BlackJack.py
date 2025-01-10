@@ -62,13 +62,6 @@ while not game_over:
         if player_score > 21:
             final_message = "You went over. You lose."
             game_over = True
-        else:
-            if computer_score < 17:
-                computer_cards.append(pick_a_card())
-                computer_score = calculate_score(computer_score, computer_cards[-1])
-                if computer_score > 21:
-                    final_message = "You win!"
-                    game_over = True
 
         print_result()
     else:
@@ -78,15 +71,15 @@ while not game_over:
             print_result()
             if computer_score > 21:
                 final_message = "You win!"
-                game_over = True
-        if not game_over:
-            if player_score > computer_score:
-                final_message = "You win!"
-            elif player_score == computer_score:
-                final_message = "Draw!"
-            else:
-                final_message = "You lose."
-            game_over = True
+        game_over = True
+
+if not final_message:
+    if player_score > computer_score:
+        final_message = "You win!"
+    elif player_score == computer_score:
+        final_message = "Draw!"
+    else:
+        final_message = "You lose."
 
 print()
 print("Game finished")
