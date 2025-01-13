@@ -28,12 +28,16 @@ def calculate_score(current_score, card):
 
     return current_score
 
-def input_another_card():
-    another_card = input("Type 'y' to get another card, type 'n' to pass: ")
-    while not (another_card == "y" or another_card == "n"):
+def user_wants_card():
+    """Ask player if they want to deal another card. Return boolean value"""
+
+    answer = input("Type 'y' to get another card, type 'n' to pass: ")
+    while not (answer == "y" or answer == "n"):
         print("Unexpected input")
-        another_card = input("Type 'y' to get another card, type 'n' to pass: ")
-    return another_card
+        answer = input("Type 'y' to get another card, type 'n' to pass: ")
+    if answer == "y":
+        return True
+    return False
 
 def print_result():
     print(f"Your cards: {player_cards}, current score: {player_score}")
@@ -61,9 +65,8 @@ elif computer_score == 21:
     final_message = "Computer has blackjack. You lose."
 
 while not game_over:
-    need_card = input_another_card()
 
-    if need_card == 'y':
+    if user_wants_card():
         player_cards.append(deal_card())
         player_score = calculate_score(player_score, player_cards[-1])
 
