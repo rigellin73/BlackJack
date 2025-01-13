@@ -49,6 +49,16 @@ for _ in range(2):
 
 print_result()
 
+if player_score == 21 and computer_score == 21:
+    game_over = True
+    final_message = "Push. You both have blackjacks."
+elif player_score == 21:
+    game_over = True
+    final_message = "Blackjack! You win!"
+elif computer_score == 21:
+    game_over = True
+    final_message = "Computer has blackjack. You lose."
+
 while not game_over:
     need_card = input_another_card()
 
