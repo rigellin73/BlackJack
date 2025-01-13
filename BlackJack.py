@@ -37,7 +37,8 @@ def input_another_card():
 
 def print_result():
     print(f"Your cards: {player_cards}, current score: {player_score}")
-    print(f"Computer's cards: {computer_cards}, current score: {computer_score}")
+    print(f"Computer's first card: {computer_cards[0]}")
+    #print(f"Computer's cards: {computer_cards}, current score: {computer_score}")
 
 print(logo)
 
